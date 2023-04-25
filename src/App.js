@@ -15,11 +15,11 @@ const App = () => {
   const [delData, setDelData] = useState([])
   console.log(delData)
   const[display, setDisplay] = useState("flex")
-  const [value, setValue] = useState("")
-  const [allData, setAllData] = useState(inbox.concat(spam))
+  const [, setValue] = useState("")
+  const [allData] = useState(inbox.concat(spam))
   const [count, setCount] = useState(inbox.map((ele) => {
     let count = 0;
-    if(ele.unread == false){
+    if(ele.unread === false){
       count++
     }
     return count
@@ -118,7 +118,7 @@ const App = () => {
             </div>
            </div>
            {data.map(ele => {
-            return <div className='mail_list_container' onClick={() => setMail(ele)}>
+            return <div key={ele.mId} className='mail_list_container' onClick={() => setMail(ele)}>
                <div className='mail_list' style={{color: ele.unread ? "#000" : "#0f6cbd"}} onClick={() => markAsRead(ele.mId)}>
                <p>{ele.name}</p>
                <p>{ele.subject}</p>
